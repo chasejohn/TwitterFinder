@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C2034" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VCp-oZ-oHM">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller - Twitter Finder-->
+        <scene sceneID="5">
+            <objects>
+                <viewController id="2" customClass="JCCViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YvN-Ag-FYC">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbq-uG-Bwg">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Zaf-uU-Yer" kind="modal" identifier="presentUserList" id="pCF-cd-b8q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YvN-Ag-FYC" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Noc-5x-UIM"/>
+                            <constraint firstItem="rbq-uG-Bwg" firstAttribute="centerX" secondItem="YvN-Ag-FYC" secondAttribute="centerX" type="default" id="V7c-oI-R2N"/>
+                            <constraint firstItem="YvN-Ag-FYC" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Zmf-B9-dq9"/>
+                            <constraint firstItem="rbq-uG-Bwg" firstAttribute="top" secondItem="3" secondAttribute="top" constant="52" id="nSy-M3-gwo"/>
+                            <constraint firstAttribute="trailing" secondItem="YvN-Ag-FYC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="zO0-1G-Hvh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Twitter Finder" id="OzY-db-TnN"/>
+                    <connections>
+                        <outlet property="searchTextfield" destination="YvN-Ag-FYC" id="a5Z-5b-0C2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="706" y="-582"/>
+        </scene>
+        <!--User List View Controller - Twitter Users-->
+        <scene sceneID="CJw-YH-XUI">
+            <objects>
+                <tableViewController id="KNo-SH-4hN" customClass="JCCUserListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Cdf-15-dNB">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="gYv-XX-DME" detailTextLabel="zWf-at-3hr" style="IBUITableViewCellStyleSubtitle" id="iFW-Pm-z68">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-XX-DME">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWf-at-3hr">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="byf-tr-2xW" kind="push" identifier="viewProfile" id="IYw-23-5ez"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Twitter Users" id="OUs-xw-C0z">
+                        <barButtonItem key="rightBarButtonItem" title="Back" id="v8F-C2-Emt">
+                            <connections>
+                                <action selector="done:" destination="KNo-SH-4hN" id="2Cy-lM-MXy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="view" destination="Cdf-15-dNB" id="8Cp-UR-pg0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CxD-Tk-m7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1622" y="-583"/>
+        </scene>
+        <!--Profile Web View - User-->
+        <scene sceneID="QNB-Cx-AYD">
+            <objects>
+                <viewController id="byf-tr-2xW" customClass="JCCProfileWebView" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NO4-EU-5Ht">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcH-Sv-vxf">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lcH-Sv-vxf" firstAttribute="bottom" secondItem="NO4-EU-5Ht" secondAttribute="bottom" type="default" id="4YY-he-QbY"/>
+                            <constraint firstItem="lcH-Sv-vxf" firstAttribute="trailing" secondItem="NO4-EU-5Ht" secondAttribute="trailing" type="default" id="6AV-fa-X2K"/>
+                            <constraint firstItem="lcH-Sv-vxf" firstAttribute="leading" secondItem="NO4-EU-5Ht" secondAttribute="leading" type="default" id="Ig9-Fc-pbF"/>
+                            <constraint firstItem="lcH-Sv-vxf" firstAttribute="top" secondItem="NO4-EU-5Ht" secondAttribute="top" type="default" id="yo8-p2-T0j"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="User" id="3qu-7w-sGA">
+                        <barButtonItem key="rightBarButtonItem" title="Follow" id="Rso-rz-cUx">
+                            <connections>
+                                <action selector="followUser:" destination="byf-tr-2xW" id="Uvs-qj-qxt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="profileWebView" destination="lcH-Sv-vxf" id="AKY-Vx-jUm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lNO-PE-799" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2078" y="-583"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Nhh-oK-psK">
+            <objects>
+                <navigationController id="VCp-oZ-oHM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KVY-ST-rcH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="eET-P5-qcx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BcG-yn-yMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="264" y="-582"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dxO-nv-jBD">
+            <objects>
+                <navigationController id="Zaf-uU-Yer" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q0Z-jP-2Ra">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KNo-SH-4hN" kind="relationship" relationship="rootViewController" id="KZg-nt-hCf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6x1-Kc-PTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1172" y="-583"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="JCCProfileWebView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JCCProfileWebView.h"/>
+            <relationships>
+                <relationship kind="action" name="followUser:"/>
+                <relationship kind="outlet" name="profileWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="JCCUserListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JCCUserListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="JCCViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JCCViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchTextfield" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
