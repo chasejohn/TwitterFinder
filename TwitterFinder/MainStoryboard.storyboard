@@ -26,7 +26,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Zaf-uU-Yer" kind="modal" identifier="presentUserList" id="pCF-cd-b8q"/>
+                                    <segue destination="KNo-SH-4hN" kind="push" identifier="presentUserList" id="Lpr-dQ-V2f"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706" y="-582"/>
+            <point key="canvasLocation" x="744" y="-582"/>
         </scene>
         <!--User List View Controller - Twitter Users-->
         <scene sceneID="CJw-YH-XUI">
@@ -96,7 +96,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CxD-Tk-m7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="-583"/>
+            <point key="canvasLocation" x="1248" y="-583"/>
         </scene>
         <!--Profile Web View - User-->
         <scene sceneID="QNB-Cx-AYD">
@@ -131,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNO-PE-799" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2078" y="-583"/>
+            <point key="canvasLocation" x="1766" y="-582"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nhh-oK-psK">
@@ -151,49 +151,7 @@
             </objects>
             <point key="canvasLocation" x="264" y="-582"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dxO-nv-jBD">
-            <objects>
-                <navigationController id="Zaf-uU-Yer" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q0Z-jP-2Ra">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="KNo-SH-4hN" kind="relationship" relationship="rootViewController" id="KZg-nt-hCf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6x1-Kc-PTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1172" y="-583"/>
-        </scene>
     </scenes>
-    <classes>
-        <class className="JCCProfileWebView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/JCCProfileWebView.h"/>
-            <relationships>
-                <relationship kind="action" name="followUser:"/>
-                <relationship kind="outlet" name="profileWebView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="JCCUserListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/JCCUserListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="JCCViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/JCCViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchTextfield" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

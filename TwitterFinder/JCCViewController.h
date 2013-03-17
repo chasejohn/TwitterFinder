@@ -10,7 +10,4 @@
 #import "JCCUserListViewController.h"
 
 @interface JCCViewController : UIViewController
-{
-IBOutlet UITextField *searchTextfield;
-}
 @end
