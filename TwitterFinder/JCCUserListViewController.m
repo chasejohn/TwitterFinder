@@ -9,18 +9,30 @@
 #import "JCCUserListViewController.h"
 #import "JCCTwitterUser.h"
 #import "JCCProfileWebView.h"
+#import "JCCTwitterService.h"
 
 @interface JCCUserListViewController ()
+
+@property(nonatomic, strong) JCCTwitterService* twitterService;
+@property(nonatomic, strong) NSMutableArray *users;
 
 @end
 
 @implementation JCCUserListViewController
 
+#pragma mark - JCCTwitterDataLoaded
+-(void)dataLoaded
+{
+    [self.tableView reloadData];
+}
+
+#pragma mark - UITableViewController
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // initialize
+        //init
     }
     return self;
 }
@@ -29,9 +41,11 @@
 {
     [super viewDidLoad];
     
-    //TODO add loading indicator
+    self.twitterService = [[JCCTwitterService alloc] init];
+    self.twitterService.delegate = self;
+    self.users = [self.twitterService getUsers:self.searchText];
     
-
+    //TODO add loading indicator
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,12 +65,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return [self.dataSource userCount];
+    return self.users.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataSource userCount];
+    return self.users.count;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,7 +85,7 @@
                                       reuseIdentifier:CellIdentifier];
     }
     
-    JCCTwitterUser *user = [self.dataSource userAtIndex:indexPath.row];
+    JCCTwitterUser *user = [self.users objectAtIndex:indexPath.row];
     cell.textLabel.text = [user name];
     cell.detailTextLabel.text = [user screenName];
     cell.imageView.image = [user image];
@@ -87,7 +102,7 @@
     if([@"viewProfile" isEqualToString:segue.identifier]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         JCCProfileWebView *destViewController = segue.destinationViewController;
-        destViewController.screenName = [[self.dataSource userAtIndex:indexPath.row] screenName];
+        destViewController.screenName = [[self.users objectAtIndex:indexPath.row] screenName];
     }
 }
 

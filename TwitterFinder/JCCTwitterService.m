@@ -1,50 +1,32 @@
 //
-//  JCCTwitterUserSource.m
-//  TwitterContactFinder
+//  JCCTwitterService.m
+//  TwitterFinder
 //
-//  Created by John Chase on 2/12/13.
+//  Created by John Chase on 3/24/13.
 //  Copyright (c) 2013 John Chase. All rights reserved.
 //
 
-#import "JCCTwitterUserSource.h"
+#import "JCCTwitterService.h"
 #import "JCCTwitterUser.h"
+#import "Accounts/Accounts.h"
 #import "Social/Social.h"
 
-@interface JCCTwitterUserSource()
 
--(void) loadUsers;
+@interface JCCTwitterService()
+
 -(void) handleTwitterData: (NSData*) data
+                    users: (NSMutableArray*) users
               urlResponse: (NSHTTPURLResponse*) urlResponse
                     error: (NSError*) error;
-
-@property(nonatomic, strong) NSMutableArray *users;
-
 @end
 
+@implementation JCCTwitterService
 
-@implementation JCCTwitterUserSource
+@synthesize delegate;
 
-@synthesize searchParameter;
-@synthesize userListView;
-
-- (NSArray *)users {
-    if(!_users) {
-        self.users = [NSMutableArray array];
-        [self loadUsers];
-    }
-    return _users;
-}
-
-- (NSInteger)userCount {
-    return [self.users count];
-}
-
-- (JCCTwitterUser *)userAtIndex:(NSInteger)index {
-    return [self.users objectAtIndex:index];
-}
-
--(void) loadUsers {self.users = [NSMutableArray array];
+-(NSMutableArray*) getUsers: (NSString*) searchParameter {
     NSLog(@"loadUsers start");
+    NSMutableArray* users = [[NSMutableArray alloc] init];
     // Request access to the Twitter accounts
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -55,31 +37,34 @@
             if (accounts.count > 0)
             {
                 ACAccount *twitterAccount = [accounts objectAtIndex:0];
-
+                
                 NSURL *twitterAPIURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/users/search.json"];
                 NSDictionary *twitterParams = @ { @"q" : searchParameter , @"page" : @"1" , @"per_page" : @"5" };
                 SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
-                                            requestMethod:SLRequestMethodGET
-                                                      URL:twitterAPIURL
-                                               parameters:twitterParams];
+                                                        requestMethod:SLRequestMethodGET
+                                                                  URL:twitterAPIURL
+                                                           parameters:twitterParams];
                 [request setAccount:twitterAccount];
                 [request performRequestWithHandler:^(NSData *responseData,
-                                         NSHTTPURLResponse *urlResponse,
-                                         NSError *error) {
+                                                     NSHTTPURLResponse *urlResponse,
+                                                     NSError *error) {
                     [self handleTwitterData:responseData
+                                      users:users
                                 urlResponse:urlResponse
                                       error:error];
-                    }];
+                }];
             }
         } else {
             NSLog(@"No access granted");
         }
     }];
+    return users;
 }
 
 -(void) handleTwitterData: (NSData*) data
+                    users: (NSMutableArray*) users
               urlResponse: (NSHTTPURLResponse*) urlResponse
-                    error: (NSError*) error {        
+                    error: (NSError*) error {
     NSError *jsonError = nil;
     NSJSONSerialization *jsonResponse =
     [NSJSONSerialization JSONObjectWithData:data
@@ -88,15 +73,15 @@
     if (!jsonError &&
         [jsonResponse isKindOfClass:[NSArray class]]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSArray *users = (NSArray*) jsonResponse;
-            users = [users sortedArrayWithOptions:NSSortConcurrent usingComparator:
-                      ^NSComparisonResult(id obj1, id obj2) {
-                          NSString *tweet1 = [obj1 valueForKey:@"screen_name"];
-                          NSString *tweet2 = [obj2 valueForKey:@"screen_name"];
-                          return [tweet1 compare:tweet2];
-                      }];
+            NSArray *twits = (NSArray*) jsonResponse;
+            twits = [twits sortedArrayWithOptions:NSSortConcurrent usingComparator:
+                     ^NSComparisonResult(id obj1, id obj2) {
+                         NSString *tweet1 = [obj1 valueForKey:@"screen_name"];
+                         NSString *tweet2 = [obj2 valueForKey:@"screen_name"];
+                         return [tweet1 compare:tweet2];
+                     }];
             
-            for (NSDictionary *userDict in users) {
+            for (NSDictionary *userDict in twits) {
                 NSString *name = [userDict objectForKey:@"name"];
                 NSString *screenName = [userDict objectForKey:@"screen_name"];
                 NSString *profileImageStringURL = [userDict objectForKey:@"profile_image_url_https"];
@@ -107,21 +92,23 @@
                 user.name = name;
                 user.screenName = screenName;
                 user.image = [UIImage imageWithData:data];
-                [self.users addObject:user];
-            }            
+                [users addObject:user];
+            }
             
             /*NSLog(@"User array:");
-            for (id logUser in self.users) {
-                NSLog([logUser name]);
-            } */
-
-            [self.userListView.tableView reloadData];
+             for (id logUser in users) {
+             NSLog([logUser name]);
+             } */
+            
+            if([self.delegate respondsToSelector:@selector(dataLoaded)])
+            {
+                [self.delegate dataLoaded];
+            }
         });
     } else {
         NSLog(@"JSON error or invalid response.");
         NSLog(@"http response code: %i", [urlResponse statusCode]);
     }
 }
-
 
 @end

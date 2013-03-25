@@ -22,8 +22,8 @@
 		5290CC6516D5BC4D00AE0D8D /* JCCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5290CC5916D5BC4D00AE0D8D /* JCCViewController.m */; };
 		5290CC6616D5BC4D00AE0D8D /* JCCUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5290CC5B16D5BC4D00AE0D8D /* JCCUserListViewController.m */; };
 		5290CC6716D5BC4D00AE0D8D /* JCCTwitterUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5290CC5D16D5BC4D00AE0D8D /* JCCTwitterUser.m */; };
-		5290CC6816D5BC4D00AE0D8D /* JCCTwitterUserSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5290CC6016D5BC4D00AE0D8D /* JCCTwitterUserSource.m */; };
 		5290CC6916D5BC4D00AE0D8D /* JCCProfileWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5290CC6216D5BC4D00AE0D8D /* JCCProfileWebView.m */; };
+		529827C516FFB72B004121EE /* JCCTwitterService.m in Sources */ = {isa = PBXBuildFile; fileRef = 529827C416FFB72B004121EE /* JCCTwitterService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,11 +49,10 @@
 		5290CC5B16D5BC4D00AE0D8D /* JCCUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCUserListViewController.m; sourceTree = "<group>"; };
 		5290CC5C16D5BC4D00AE0D8D /* JCCTwitterUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCTwitterUser.h; sourceTree = "<group>"; };
 		5290CC5D16D5BC4D00AE0D8D /* JCCTwitterUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCTwitterUser.m; sourceTree = "<group>"; };
-		5290CC5E16D5BC4D00AE0D8D /* JCCTwitterUserListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCTwitterUserListDataSource.h; sourceTree = "<group>"; };
-		5290CC5F16D5BC4D00AE0D8D /* JCCTwitterUserSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCTwitterUserSource.h; sourceTree = "<group>"; };
-		5290CC6016D5BC4D00AE0D8D /* JCCTwitterUserSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCTwitterUserSource.m; sourceTree = "<group>"; };
 		5290CC6116D5BC4D00AE0D8D /* JCCProfileWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCProfileWebView.h; sourceTree = "<group>"; };
 		5290CC6216D5BC4D00AE0D8D /* JCCProfileWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCProfileWebView.m; sourceTree = "<group>"; };
+		529827C316FFB72B004121EE /* JCCTwitterService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCTwitterService.h; sourceTree = "<group>"; };
+		529827C416FFB72B004121EE /* JCCTwitterService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCTwitterService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +112,8 @@
 				5290CC5B16D5BC4D00AE0D8D /* JCCUserListViewController.m */,
 				5290CC5C16D5BC4D00AE0D8D /* JCCTwitterUser.h */,
 				5290CC5D16D5BC4D00AE0D8D /* JCCTwitterUser.m */,
-				5290CC5E16D5BC4D00AE0D8D /* JCCTwitterUserListDataSource.h */,
-				5290CC5F16D5BC4D00AE0D8D /* JCCTwitterUserSource.h */,
-				5290CC6016D5BC4D00AE0D8D /* JCCTwitterUserSource.m */,
+				529827C316FFB72B004121EE /* JCCTwitterService.h */,
+				529827C416FFB72B004121EE /* JCCTwitterService.m */,
 				5290CC6116D5BC4D00AE0D8D /* JCCProfileWebView.h */,
 				5290CC6216D5BC4D00AE0D8D /* JCCProfileWebView.m */,
 				5290CC1F16D5B6E100AE0D8D /* Supporting Files */,
@@ -209,8 +207,8 @@
 				5290CC6516D5BC4D00AE0D8D /* JCCViewController.m in Sources */,
 				5290CC6616D5BC4D00AE0D8D /* JCCUserListViewController.m in Sources */,
 				5290CC6716D5BC4D00AE0D8D /* JCCTwitterUser.m in Sources */,
-				5290CC6816D5BC4D00AE0D8D /* JCCTwitterUserSource.m in Sources */,
 				5290CC6916D5BC4D00AE0D8D /* JCCProfileWebView.m in Sources */,
+				529827C516FFB72B004121EE /* JCCTwitterService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

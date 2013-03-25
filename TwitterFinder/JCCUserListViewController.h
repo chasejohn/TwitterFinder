@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "JCCTwitterUserListDataSource.h"
-#import "JCCTwitterUserSource.h"
+#import "JCCTwitterService.h"
 
-@interface JCCUserListViewController : UITableViewController
+@interface JCCUserListViewController : UITableViewController <JCCTwitterDataLoaded>
 
-@property(nonatomic, strong) id <JCCTwitterUserListDataSource> dataSource;
+@property(nonatomic, strong) NSString *searchText;
 
 - (IBAction)done:(UIBarButtonItem *)sender;
 

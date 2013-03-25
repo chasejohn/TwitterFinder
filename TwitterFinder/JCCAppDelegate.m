@@ -8,7 +8,6 @@
 
 #import "JCCAppDelegate.h"
 #import "JCCUserListViewController.h"
-#import "JCCTwitterUserSource.h"
 
 @implementation JCCAppDelegate
 

@@ -7,7 +7,6 @@
 //
 
 #import "JCCViewController.h"
-#import "JCCTwitterUserSource.h"
 
 @interface JCCViewController ()
 @property (nonatomic, weak) IBOutlet UITextField *searchTextfield;
@@ -18,11 +17,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([@"presentUserList" isEqualToString:segue.identifier]) {
         JCCUserListViewController *userListViewController = segue.destinationViewController;
-
-        JCCTwitterUserSource *userSource = [[JCCTwitterUserSource alloc] init];
-        [userSource setSearchParameter:self.searchTextfield.text];
-        [userListViewController setDataSource:userSource];
-        [userSource setUserListView:userListViewController];
+        userListViewController.searchText = self.searchTextfield.text;
     }
 }
 
