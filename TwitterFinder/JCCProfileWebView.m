@@ -35,6 +35,8 @@
     else if([title isEqualToString:OK_KEY])
     {
         NSLog(@"OK was selected.");
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:screenName message:@"Function Not Implemented!" delegate:self cancelButtonTitle:CANCEL_KEY otherButtonTitles:nil, nil];
+        [alert show];
         //TODO call https://api.twitter.com/1.1/friendships/create.json
         // https://dev.twitter.com/docs/api/1.1/post/friendships/create
         //TODO centralize all twitter api calls to one class
