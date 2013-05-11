@@ -14,14 +14,14 @@
 @interface JCCUserListViewController ()
 
 @property(nonatomic, strong) JCCTwitterService* twitterService;
-@property(nonatomic, strong) NSMutableArray *users;
+@property(nonatomic, strong) NSArray *users;
 
 @end
 
 @implementation JCCUserListViewController
 
 #pragma mark - JCCTwitterDataLoaded
--(void)dataLoaded
+- (void)dataLoaded
 {
     [self.tableView reloadData];
 }
@@ -65,12 +65,12 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return self.users.count;
+    return [self.users count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.users.count;
+    return [self.users count];
 
 }
 
@@ -78,8 +78,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView
-                             dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:CellIdentifier];
@@ -93,9 +92,9 @@
     return cell;
 }
 
-- (IBAction)done:(UIBarButtonItem *)sender {
+- (IBAction)done:(id *)sender {
     [self dismissViewControllerAnimated:YES
-                             completion:NULL];
+                             completion:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

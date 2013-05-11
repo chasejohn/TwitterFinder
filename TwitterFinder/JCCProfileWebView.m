@@ -39,7 +39,7 @@
         [alert show];
         //TODO call https://api.twitter.com/1.1/friendships/create.json
         // https://dev.twitter.com/docs/api/1.1/post/friendships/create
-        //TODO centralize all twitter api calls to one class
+        //from JCCTwitterService
     }
 }
 

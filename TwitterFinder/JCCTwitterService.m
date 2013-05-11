@@ -11,20 +11,11 @@
 #import "Accounts/Accounts.h"
 #import "Social/Social.h"
 
-
-@interface JCCTwitterService()
-
--(void) handleTwitterData: (NSData*) data
-                    users: (NSMutableArray*) users
-              urlResponse: (NSHTTPURLResponse*) urlResponse
-                    error: (NSError*) error;
-@end
-
 @implementation JCCTwitterService
 
 @synthesize delegate;
 
--(NSMutableArray*) getUsers: (NSString*) searchParameter {
+- (NSArray *)getUsers:(NSString *)searchParameter {
     NSLog(@"loadUsers start");
     NSMutableArray* users = [[NSMutableArray alloc] init];
     // Request access to the Twitter accounts
@@ -34,7 +25,7 @@
         if (granted) {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
             // Check if the users has setup at least one Twitter account
-            if (accounts.count > 0)
+            if ([accounts count] > 0)
             {
                 ACAccount *twitterAccount = [accounts objectAtIndex:0];
                 
@@ -61,10 +52,10 @@
     return users;
 }
 
--(void) handleTwitterData: (NSData*) data
-                    users: (NSMutableArray*) users
-              urlResponse: (NSHTTPURLResponse*) urlResponse
-                    error: (NSError*) error {
+- (void)handleTwitterData:(NSData *)data
+                    users:(NSMutableArray *)users
+              urlResponse:(NSHTTPURLResponse *)urlResponse
+                    error:(NSError *)error {
     NSError *jsonError = nil;
     NSJSONSerialization *jsonResponse =
     [NSJSONSerialization JSONObjectWithData:data

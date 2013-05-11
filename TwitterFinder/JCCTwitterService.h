@@ -17,8 +17,8 @@
 
 @interface JCCTwitterService : NSObject
 
--(NSMutableArray*) getUsers: (NSString*) searchParameter;
+- (NSArray *)getUsers:(NSString *)searchParameter;
 
-@property (nonatomic, assign) id  <JCCTwitterDataLoaded> delegate;
+@property (nonatomic, weak) id<JCCTwitterDataLoaded> delegate;
 
 @end

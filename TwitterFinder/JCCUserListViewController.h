@@ -14,6 +14,6 @@
 
 @property(nonatomic, strong) NSString *searchText;
 
-- (IBAction)done:(UIBarButtonItem *)sender;
+- (IBAction)done:(id *)sender;
 
 @end

@@ -10,8 +10,8 @@
 
 @interface JCCProfileWebView : UIViewController <UIWebViewDelegate, UIAlertViewDelegate>
 
-@property(nonatomic, strong) NSString *screenName;
-@property (weak, nonatomic) IBOutlet UIWebView *profileWebView;
+@property (nonatomic, strong) NSString *screenName;
+@property (nonatomic, weak) IBOutlet UIWebView *profileWebView;
 
 #define CANCEL_KEY @"Cancel"
 #define OK_KEY @"OK"

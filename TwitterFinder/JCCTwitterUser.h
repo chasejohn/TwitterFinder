@@ -11,9 +11,9 @@
 @interface JCCTwitterUser : NSObject
 
 
-@property(nonatomic, copy) NSString *name;
-@property(nonatomic, copy) NSString *screenName;
-@property(nonatomic, strong) UIImage *image;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *screenName;
+@property (nonatomic, strong) UIImage *image;
 
 
 @end
